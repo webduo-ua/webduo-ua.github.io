@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bodro Coffee — кав'ярня у Рівному</title>
+<meta name="description" content="Спешелті кава, сніданки до 12:00 і свіжа випічка щоранку. Рівне, вул. Соборна.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F0E8; --paper:#FFFBF5; --ink:#241A14; --muted:#7A6A5E;
+    --coffee:#6B3F24; --crema:#C98B4E; --line:#E6D9CB;
+    --serif:'Playfair Display',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:500 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  /* nav */
+  .nav{position:absolute;top:0;left:0;right:0;z-index:5}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font:700 24px var(--serif);color:#fff;letter-spacing:.3px}
+  .logo i{color:var(--crema);font-style:italic}
+  .nav ul{display:flex;gap:30px;list-style:none;color:#fff;font-weight:600;font-size:15px}
+  .nav ul a{opacity:.85}.nav ul a:hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 26px;border-radius:999px;font:800 15px var(--sans);letter-spacing:.2px;transition:transform .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:var(--crema);color:#1C120C}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+
+  /* hero */
+  .hero{position:relative;min-height:720px;height:100vh;max-height:900px;color:#fff;display:flex;align-items:flex-end}
+  .hero .bg{position:absolute;inset:0}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,12,8,.75) 0%,rgba(20,12,8,.2) 65%),linear-gradient(180deg,rgba(20,12,8,.55) 0%,rgba(20,12,8,.15) 35%,rgba(20,12,8,.85) 100%)}
+  .hero .wrap{position:relative;padding-bottom:90px;width:100%}
+  .tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--crema);margin-bottom:18px}
+  .hero h1{font:700 clamp(44px,7vw,92px)/1.02 var(--serif);max-width:820px;letter-spacing:-1px}
+  .hero h1 i{color:var(--crema)}
+  .hero p{max-width:520px;margin:22px 0 34px;font-size:19px;opacity:.9}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hours-pill{position:absolute;right:20px;bottom:96px;background:rgba(255,251,245,.12);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:18px 22px;font-size:14px;line-height:1.5}
+  .hours-pill b{display:block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--crema);margin-bottom:6px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7ED957;margin-right:8px;box-shadow:0 0 0 4px rgba(126,217,87,.25)}
+
+  /* facts */
+  .facts{background:var(--ink);color:#F3E7DA}
+  .facts .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:34px;padding-bottom:34px}
+  .fact{display:flex;gap:14px;align-items:center}
+  .fact .ic{flex:none;width:46px;height:46px;border-radius:14px;background:rgba(201,139,78,.16);display:grid;place-items:center;font-size:22px}
+  .fact b{display:block;font-size:16px}.fact span{font-size:14px;opacity:.7}
+
+  section{padding:110px 0}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
+  h2{font:700 clamp(34px,4.6vw,56px)/1.08 var(--serif);letter-spacing:-.5px}
+  h2 i{color:var(--coffee)}
+  .head p{max-width:380px;color:var(--muted)}
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+  .about .pics{position:relative;height:560px}
+  .about .p1{position:absolute;left:0;top:0;width:72%;height:82%;border-radius:28px;overflow:hidden}
+  .about .p2{position:absolute;right:0;bottom:0;width:50%;height:52%;border-radius:28px;overflow:hidden;border:8px solid var(--bg)}
+  .about p{color:var(--muted);margin:22px 0}
+  .sign{font:600 italic 22px var(--serif);color:var(--coffee)}
+
+  /* menu */
+  .menu{background:var(--paper)}
+  .tabs{display:flex;gap:10px;margin-bottom:34px;flex-wrap:wrap}
+  .tabs button{border:1.5px solid var(--line);background:transparent;padding:11px 22px;border-radius:999px;font:700 15px var(--sans);color:var(--ink);cursor:pointer}
+  .tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 60px}
+  .item{display:flex;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px dashed var(--line)}
+  .item .n{font-weight:800;font-size:18px}
+  .item .d{display:block;font-size:14px;color:var(--muted);font-weight:500}
+  .item .fill{flex:1}
+  .item .pr{font:700 20px var(--serif);color:var(--coffee);white-space:nowrap}
+  .pane{display:none}.pane.on{display:block}
+  .menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
+  .card{background:var(--bg);border-radius:24px;overflow:hidden}
+  .card .im{height:240px}
+  .card div.t{padding:20px 22px 24px}
+  .card .t b{font-size:18px;display:block}.card .t span{font-size:14px;color:var(--muted)}
+  .badge{display:inline-block;background:var(--crema);color:#1C120C;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px;letter-spacing:.5px}
+
+  /* gallery */
+  .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:16px}
+  .gallery-grid div{border-radius:22px;overflow:hidden}
+  .gallery-grid .big{grid-row:span 2}
+
+  /* visit */
+  .visit{background:var(--ink);color:#F3E7DA}
+  .visit h2 i{color:var(--crema)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch}
+  .visit dl{margin:34px 0;display:grid;gap:20px}
+  .visit dt{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--crema)}
+  .visit dd{font-size:19px;margin-top:4px}
+  .map{border-radius:28px;overflow:hidden;position:relative;min-height:420px;background:#2E231C}
+  .map img{opacity:.55}
+  .map .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--paper);color:var(--ink);padding:18px 22px;border-radius:18px;font-weight:700;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:center;font-size:15px}
+  .map .pin b{display:block;font:700 20px var(--serif)}
+
+  footer{background:#1A120D;color:#A89584;font-size:14px;padding:30px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--crema);font-weight:700}
+
+  /* mobile */
+  @media (max-width:860px){
+    .nav ul{display:none}
+    .hero{height:auto;min-height:680px}
+    .hours-pill{position:static;margin-top:26px;display:inline-block}
+    .hero .wrap{padding-top:120px;padding-bottom:60px}
+    .nav .btn{padding:11px 16px;font-size:13px}
+    .hero p{font-size:17px}
+    .facts .wrap,.about .wrap,.visit .wrap,.menu-grid,.menu-cards{grid-template-columns:1fr}
+    .about .pics{height:420px}
+    section{padding:76px 0}
+    .head{flex-direction:column;align-items:flex-start}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+    .gallery-grid .big{grid-column:span 2;grid-row:auto}
+    .map{min-height:300px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="logo" href="#">Bodro <i>Coffee</i></a>
+  <ul><li><a href="#about">Про нас</a></li><li><a href="#menu">Меню</a></li><li><a href="#gallery">Атмосфера</a></li><li><a href="#visit">Контакти</a></li></ul>
+  <a class="btn btn-main" href="#visit">Замовити наперед</a>
+</div></nav>
+
+<header class="hero">
+  <div class="bg"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2000&q=80" alt="Зала кав'ярні"></div>
+  <div class="wrap">
+    <span class="tag">Кав'ярня · Рівне</span>
+    <h1>Кава, заради якої <i>варто прокинутись</i></h1>
+    <p>Спешелті зерно власного підбору, сніданки до полудня і випічка, яка ще тепла о восьмій ранку.</p>
+    <div class="cta">
+      <a class="btn btn-main" href="#menu">Дивитись меню</a>
+      <a class="btn btn-ghost" href="#visit">Як нас знайти</a>
+    </div>
+    <div class="hours-pill"><b>Сьогодні</b><span class="dot"></span>Відчинено · 08:00–21:00</div>
+  </div>
+</header>
+
+<div class="facts"><div class="wrap">
+  <div class="fact"><div class="ic">☕</div><div><b>Свіже обсмаження</b><span>нове зерно щотижня</span></div></div>
+  <div class="fact"><div class="ic">🥐</div><div><b>Сніданки до 12:00</b><span>щодня, і у вихідні теж</span></div></div>
+  <div class="fact"><div class="ic">💻</div><div><b>Wi-Fi і розетки</b><span>можна працювати хоч цілий день</span></div></div>
+</div></div>
+
+<section class="about" id="about"><div class="wrap">
+  <div class="pics">
+    <div class="p1"><img src="https://images.unsplash.com/photo-1532713107108-dfb5d8d2fc42?w=1200&q=80" alt="Бариста"></div>
+    <div class="p2"><img src="https://images.unsplash.com/photo-1553292218-4892c2e7e1ae?w=900&q=80" alt="Зерно"></div>
+  </div>
+  <div>
+    <span class="tag" style="color:var(--coffee)">Про нас</span>
+    <h2>Маленька кав'ярня з <i>великою любов'ю</i> до зерна</h2>
+    <p>Ми самі куштуємо кожну нову партію, перш ніж поставити її на гріндер. Тому еспресо у нас смакує однаково добре і в понеділок о восьмій, і в суботу ввечері.</p>
+    <p>Заходьте на капучино дорогою на роботу, на довгий сніданок із друзями або просто посидіти з ноутбуком.</p>
+    <div class="sign">— команда Bodro</div>
+  </div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+  <div class="head">
+    <h2>Наше <i>меню</i></h2>
+    <p>Альтернативне молоко (вівсяне, кокосове, мигдальне) без доплати.</p>
+  </div>
+  <div class="tabs">
+    <button class="on" data-t="coffee">Кава</button>
+    <button data-t="other">Не кава</button>
+    <button data-t="food">Сніданки</button>
+  </div>
+  <div class="pane on" id="coffee"><div class="menu-grid">
+    <div class="item"><div><span class="n">Еспресо</span><span class="d">подвійна порція, 40 мл</span></div><span class="fill"></span><span class="pr">45 ₴</span></div>
+    <div class="item"><div><span class="n">Американо</span><span class="d">еспресо + гаряча вода</span></div><span class="fill"></span><span class="pr">55 ₴</span></div>
+    <div class="item"><div><span class="n">Капучино</span><span class="d">250 / 350 мл</span></div><span class="fill"></span><span class="pr">65 ₴</span></div>
+    <div class="item"><div><span class="n">Флет вайт</span><span class="d">більше кави, менше молока</span></div><span class="fill"></span><span class="pr">75 ₴</span></div>
+    <div class="item"><div><span class="n">Лате на розі</span><span class="d">сироп з пелюсток троянди</span></div><span class="fill"></span><span class="pr">85 ₴</span></div>
+    <div class="item"><div><span class="n">Фільтр V60</span><span class="d">зерно тижня, 300 мл</span></div><span class="fill"></span><span class="pr">80 ₴</span></div>
+  </div></div>
+  <div class="pane" id="other"><div class="menu-grid">
+    <div class="item"><div><span class="n">Матча лате</span><span class="d">японська церемоніальна</span></div><span class="fill"></span><span class="pr">95 ₴</span></div>
+    <div class="item"><div><span class="n">Какао</span><span class="d">з маршмелоу</span></div><span class="fill"></span><span class="pr">70 ₴</span></div>
+    <div class="item"><div><span class="n">Чай листовий</span><span class="d">чайник 500 мл</span></div><span class="fill"></span><span class="pr">60 ₴</span></div>
+    <div class="item"><div><span class="n">Лимонад</span><span class="d">маракуя або ягоди</span></div><span class="fill"></span><span class="pr">75 ₴</span></div>
+  </div></div>
+  <div class="pane" id="food"><div class="menu-grid">
+    <div class="item"><div><span class="n">Круасан</span><span class="d">вершкове масло, хрусткий</span></div><span class="fill"></span><span class="pr">55 ₴</span></div>
+    <div class="item"><div><span class="n">Сирники</span><span class="d">зі сметаною і ягідним соусом</span></div><span class="fill"></span><span class="pr">145 ₴</span></div>
+    <div class="item"><div><span class="n">Бенедикт з лососем</span><span class="d">бріош, яйце пашот</span></div><span class="fill"></span><span class="pr">215 ₴</span></div>
+    <div class="item"><div><span class="n">Гранола</span><span class="d">йогурт, мед, сезонні фрукти</span></div><span class="fill"></span><span class="pr">125 ₴</span></div>
+  </div></div>
+
+  <div class="menu-cards">
+    <div class="card"><div class="im"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=900&q=80" alt="Лате"></div><div class="t"><span class="badge">Хіт</span><b>Лате на розі</b><span>Наш фірмовий напій, який замовляють найчастіше</span></div></div>
+    <div class="card"><div class="im"><img src="https://images.unsplash.com/photo-1623334044303-241021148842?w=900&q=80" alt="Круасани"></div><div class="t"><span class="badge">Щоранку</span><b>Свіжі круасани</b><span>Випікаємо о 7:30, до обіду зазвичай розбирають</span></div></div>
+    <div class="card"><div class="im"><img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?w=900&q=80" alt="Капучино"></div><div class="t"><span class="badge">Класика</span><b>Капучино</b><span>Ідеальний баланс еспресо і шовкового молока</span></div></div>
+  </div>
+</div></section>
+
+<section class="gallery" id="gallery"><div class="wrap">
+  <div class="head"><h2>Атмосфера, <i>в яку хочеться повертатись</i></h2></div>
+  <div class="gallery-grid">
+    <div class="big"><img src="https://images.unsplash.com/photo-1542181961-9590d0c79dab?w=1400&q=80" alt=""></div>
+    <div><img src="https://images.unsplash.com/photo-1545418314-7ce0b9b53901?w=800&q=80" alt=""></div>
+    <div><img src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?w=800&q=80" alt=""></div>
+    <div><img src="https://images.unsplash.com/photo-1565650839149-2c48a094196c?w=800&q=80" alt=""></div>
+    <div><img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?w=800&q=80" alt=""></div>
+  </div>
+</div></section>
+
+<section class="visit" id="visit"><div class="wrap">
+  <div>
+    <span class="tag">Контакти</span>
+    <h2>Заходьте <i>на каву</i></h2>
+    <dl>
+      <div><dt>Адреса</dt><dd>вул. Соборна, Рівне</dd></div>
+      <div><dt>Години роботи</dt><dd>Пн–Пт 08:00–21:00 · Сб–Нд 09:00–22:00</dd></div>
+      <div><dt>Телефон</dt><dd>+380 (67) 000-00-00</dd></div>
+    </dl>
+    <div class="cta" style="display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn btn-main" href="#">Замовити в Telegram</a>
+      <a class="btn btn-ghost" href="https://maps.google.com/?q=Rivne" target="_blank" rel="noopener">Відкрити в Google Maps</a>
+    </div>
+  </div>
+  <div class="map">
+    <img src="https://images.unsplash.com/photo-1565650839149-2c48a094196c?w=1200&q=60" alt="">
+    <div class="pin">📍<b>Bodro Coffee</b>5 хвилин від центру</div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© Bodro Coffee · Рівне</span>
+  <span>Концепт сайту від <a href="https://instagram.com/webduo.ua">WebDuo</a></span>
+</div></footer>
+
+<script>
+  document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+    document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t));
+  });
+</script>
+</body>
+</html>
